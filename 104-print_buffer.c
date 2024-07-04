@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <ctype.h>
+#include "main.h"
 
 /**
  * print_buffer - Prints a buffer
@@ -12,44 +11,35 @@ void print_buffer(char *b, int size)
 
     if (size <= 0)
     {
-        printf("\n");
+        _putchar('\n');
         return;
     }
 
     for (offset = 0; offset < size; offset += 10)
     {
-        printf("%08x: ", offset);
-        
+        _printf("%08x: ", offset);
+
         for (byte = 0; byte < 10; byte++)
         {
             if (offset + byte < size)
-                printf("%02x", b[offset + byte]);
+                _printf("%02x", b[offset + byte]);
             else
-                printf("  ");
+                _printf("  ");
             if (byte % 2 != 0)
-                printf(" ");
+                _printf(" ");
         }
-        
+
         for (byte2 = 0; byte2 < 10; byte2++)
         {
             if (offset + byte2 < size)
             {
-                if (isprint(b[offset + byte2]))
-                    printf("%c", b[offset + byte2]);
+                if (_isprint(b[offset + byte2]))
+                    _putchar(b[offset + byte2]);
                 else
-                    printf(".");
+                    _putchar('.');
             }
         }
-        printf("\n");
+        _putchar('\n');
     }
 }
 
-int main()
-{
-    char buffer[] = "This is a buffer to test the print_buffer function. It contains text and other things.\nNew line here.\tTab here.\0Non-printable: \x01\x02\x03";
-    int size = sizeof(buffer) - 1;
-
-    print_buffer(buffer, size);
-    
-    return 0;
-}
