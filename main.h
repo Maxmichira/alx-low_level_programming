@@ -2,7 +2,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-char *_strcat(char *dest, const char *src);
+int _putchar(char c);
+int _isupper(int c);
+char *_strcat(char *dest, char *src);
 
 #endif /* MAIN_H */
 
